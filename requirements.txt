@@ -1,0 +1,10 @@
+sentence-transformers
+chromadb
+langgraph
+requests
+beautifulsoup4
+google-generativeai
+rouge-score
+numpy
+pandas
+gradio
