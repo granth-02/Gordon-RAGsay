@@ -1,5 +1,5 @@
 Name: Masala Khicdi 
-Cusine: Indian
+Cuisine: Indian
 Type: Dinner
 Prep Time: 20mins
 Cook TIme: 25mins
@@ -7,11 +7,12 @@ Spice Level: 5/5
 Savoury Level: 5/5
 Salt Level: 4/5
 Sweetness Level: 1/5
+Umami Level: 3/5 
 Sweetness type: Natural from veggies
 Main Flavour profile: Packed with indian spices and garlicky taste
 Serves: 3
 
-Ingrediants:
+Ingredients:
 Toor Dal/split pigeon pea ½ cup
 Masoor Dal/red lentils ½ cup
 Rice 1 Cup

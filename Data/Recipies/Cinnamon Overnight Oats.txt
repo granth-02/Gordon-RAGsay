@@ -3,13 +3,16 @@ Cuisine: Versatile
 Type: Breakfast
 Prep Time: 5mins
 Cook Time: Overnight/ 8 Hours
-Spice Level: 0/5
+Spice Level: 1/5
+Savoury Level: 0/5
+Salt Level: 0/5
 Sweetness Level: 3/5
+Umami Level: 1/5 
 Sweetness Type: Natural
 Main Flavour Profile: Cinnamon and Honey
 Serves: 1
 
-Ingrediants:
+Ingredients:
 Rolled Oats 90g
 Skimmed Milk 150ml
 Powdered Cinnamon 1/2 Teaspoon

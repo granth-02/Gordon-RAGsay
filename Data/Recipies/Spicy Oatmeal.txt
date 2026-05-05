@@ -1,5 +1,5 @@
 Name: Spicy Oatmeal
-Cusine: Indian
+Cuisine: Indian
 Type: Breakfast
 Prep Time: 10mins
 Cook TIme: 15mins
@@ -7,11 +7,12 @@ Spice Level: 5/5
 Savoury Level: 5/5
 Salt Level: 4/5
 Sweetness Level: 1/5
+Umami Level: 2/5 
 Sweetness type: Natural from veggies
 Main Flavour profile: Packed with indian spices and garlicky taste
 Serves: 2
 
-Ingrediants:
+Ingredients:
 Rolled oats 90g
 Onion 1 piece 
 Tomato 1 piece

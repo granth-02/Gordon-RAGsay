@@ -4,13 +4,16 @@ Type: Breakfast
 Prep Time: 5mins
 Cook Time: Overnight/ 8 Hours
 Spice Level: 0/5
+Savoury Level: 0/5
+Salt Level: 0/5
+Umami Level: 0/5
 Sweetness Level: 3/5 
 Chocolate Bitter Sweetness level: 4/5 
 Sweetness Type: Natural and Coco
 Main Flavour Profile: Dark Chocolate
 Serves: 1
 
-Ingrediants:
+Ingredients:
 Rolled Oats 90g
 Skimmed Milk 150ml
 Unsweetened Coco Powder 1 Tablespoon
