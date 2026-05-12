@@ -1,0 +1,20 @@
+# Personal datasets
+Data/
+
+# Vector DB
+chroma_store/
+
+# SQLite memory
+*.db
+
+# Images
+*.png
+*.jpg
+*.jpeg
+
+# Environment
+.env
+
+# Cached embeddings
+*.pkl
+*.npy

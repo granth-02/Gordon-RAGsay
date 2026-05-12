@@ -1,9 +1,20 @@
 from pathlib import Path
+from sentence_transformers import SentenceTransformer
+import chromadb
 import re
 
 
 recipies = Path("Data/Recipies")
-recipies_files = list(recipies.glob("*.txt"))
+embed_model = "all-MiniLM-L6-v2"
+chroma_path = "./chroma_store"
+
+model = SentenceTransformer(embed_model)
+client = chromadb.PersistentClient(path=chroma_path)
+
+col_whole = client.get_or_create_collection("recipies_whole_doc")
+col_sections = client.get_or_create_collection("recipies_sections")
+col_sentences = client.get_or_create_collection("recipies_sentences")
+
 
 def parse_metadata(text: str) -> dict:
     metadata = {}
@@ -60,10 +71,30 @@ def chunk_sections(text: str) -> dict:
         "alternatives_chunk": alternatives_chunk,
     }
 
-def chunk_sentances(text: str) -> list:
+def chunk_sentences(text: str) -> list:
     return [line.strip() for line in text.split('\n') if line.strip() if line.strip() and not line.strip().endswith(':')]
 
-for file in recipies_files:
-    text = file.read_text(encoding='utf-8')
-    par = chunk_sentances(text)
-    print(par)
+def embed(text: str) -> list:
+    return model.encode(text).tolist()
+
+recipies_files = list(recipies.glob("*.txt"))
+
+if __name__ == "__main__":
+    recipies_files = list(recipies.glob("*.txt"))
+
+    for file in recipies_files:
+        text = file.read_text(encoding='utf-8')
+        meta = parse_metadata(text)
+        slug = file.stem.lower().replace(" ", "_")
+        print(f"Indexing: {meta.get('name', slug)}")
+
+        col_whole.add(ids=[slug], embeddings=[embed(text)], documents=[text], metadatas=[meta])
+
+        sections = chunk_sections(text)
+        for section_name, section_text in sections.items():
+            if section_text:
+                col_sections.add(ids=[f"{slug}_{section_name}"], embeddings=[embed(section_text)], documents=[section_text], metadatas=[{**meta, "chunk": section_name}])
+
+        sentences = chunk_sentences(text)
+        for i, sentence in enumerate(sentences):
+            col_sentences.add(ids=[f"{slug}_line_{i}"], embeddings=[embed(sentence)], documents=[sentence], metadatas=[{**meta, "chunk": "sentence", "line_index": i}])
