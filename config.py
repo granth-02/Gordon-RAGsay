@@ -3,7 +3,7 @@ from google.genai import types
 import PIL.Image
 import io
 
-client = genai.Client(api_key="AIzaSyAxSeA5mqtKLcl0_X_ra9N3L5m185ecmSA")
+client = genai.Client(api_key="API_KEY")
 
 def call_llm(prompt: str) -> str:
     response = client.models.generate_content(
