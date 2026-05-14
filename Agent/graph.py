@@ -11,15 +11,27 @@ from Agent.Nodes.colab import collaborative_node
 
 def vision_router_node(state: AgentState) -> AgentState:
     image_type = state.get("image_type")
+    query = state.get("query", "").lower()
+
+    # creation keywords mean collaborative regardless of image type
+    creation_keywords = ["create", "make", "cook", "suggest", "what can i", 
+                        "new recipe", "using these", "with these"]
+    wants_new_recipe = any(kw in query for kw in creation_keywords)
 
     if image_type == "pantry":
-        return {**state, "route": "existing"}
+        if wants_new_recipe:
+            # user wants a new recipe from pantry — collaborative
+            return {**state, "route": "collaborative"}
+        else:
+            # user asking about existing recipes with pantry context
+            return {**state, "route": "existing"}
 
+    # dish image — check similarity
     dish_tags = state.get("dish_tags")
     if dish_tags:
-        query = f"{dish_tags.get('dish_name', '')} {dish_tags.get('cuisine', '')}"
-        similarity, docs = check_sim(query)
-        if similarity >= 0.5:
+        query_str = f"{dish_tags.get('dish_name', '')} {dish_tags.get('cuisine', '')}"
+        similarity, docs = check_sim(query_str)
+        if similarity >= 0.4:
             return {**state, "route": "existing", "retrieved_recipes": docs}
 
     return {**state, "route": "collaborative"}
@@ -65,6 +77,6 @@ graph.add_edge("memory", "pantry_shield")
 graph.add_edge("pantry_shield", "woolworths")
 graph.add_edge("woolworths", "synthesiser")
 graph.add_edge("synthesiser", END)
-graph.add_edge("collaborative", END)
+graph.add_edge("collaborative", "pantry_shield")
 
 app = graph.compile()

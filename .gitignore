@@ -1,6 +1,7 @@
 # Personal datasets
 Data/
 
+__pycache__
 # Vector DB
 chroma_store/
 

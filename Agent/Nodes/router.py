@@ -63,19 +63,27 @@ def check_sim(query: str) -> tuple[float, list]:
     return similarity, documents
 
 
+PRICE_WORDS = ["price", "cost", "how much at woolworths", "buy", "afford"]
+
 def router(state: AgentState) -> AgentState:
     image = state.get("image")
     query = state.get("query", "")
     chunk_mode = determine_chunk_mode(query)
 
+    # price query — route to existing so it hits woolworths node
+    if any(kw in query.lower() for kw in PRICE_WORDS):
+        return {**state, "route": "existing", "chunk_mode": chunk_mode, "retrieved_recipes": []}
+
     if image:
         image_type = check_image_type(query)
         if image_type == "pantry":
             return {**state, "route": "pantry_image", "image_type": "pantry", "chunk_mode": chunk_mode}
-        return {**state, "route": "image_query", "image_type": "dish", "chunk_mode": chunk_mode}
+        else:
+            return {**state, "route": "image_query", "image_type": "dish", "chunk_mode": chunk_mode}
 
     similarity, documents = check_sim(query)
 
-    if similarity >= sim_threshold:
+    if similarity >= 0.4:
         return {**state, "route": "existing", "retrieved_recipes": documents, "chunk_mode": chunk_mode}
-    return {**state, "route": "collaborative", "retrieved_recipes": documents, "chunk_mode": chunk_mode}
+    else:
+        return {**state, "route": "collaborative", "retrieved_recipes": documents, "chunk_mode": chunk_mode}

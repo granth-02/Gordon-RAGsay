@@ -3,7 +3,7 @@ from google.genai import types
 import PIL.Image
 import io
 
-client = genai.Client(api_key="AIzaSyAxSeA5mqtKLcl0_X_ra9N3L5m185ecmSA")
+client = genai.Client(api_key="AIzaSyASsQeRz1lEGba666xxjJ98oIOvj5bm_5Q")
 
 def call_llm(prompt: str) -> str:
     response = client.models.generate_content(
@@ -22,7 +22,7 @@ def call_vision(image_path: str, prompt: str) -> str:
     jpeg_img = PIL.Image.open(buf)
     
     response = client.models.generate_content(
-        model="gemini-2.0-flash-lite",
+        model="gemini-3.1-flash-lite-preview",
         contents=[prompt, jpeg_img]
     )
     return response.text

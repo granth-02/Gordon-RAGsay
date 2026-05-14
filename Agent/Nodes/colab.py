@@ -1,41 +1,24 @@
-# agent/nodes/collaborative_node.py
-import requests
 import json
-from config import call_llm
 from pathlib import Path
 from Agent.state import AgentState
+from config import call_llm
+from sentence_transformers import SentenceTransformer
+import chromadb
+from datetime import datetime
 
 ROOT = Path(__file__).parent.parent.parent
-RELATIONSHIPS_PATH = ROOT / "Data" / "recipe_relationships.json"
 
-with open(RELATIONSHIPS_PATH, "r") as f:
-    relationships = json.load(f)
-
-dna = relationships["dna_rules"]
-
-NORMAL_INTRO = """You are Sous Chef, a warm and supportive personal recipe assistant for Granth.
-You are encouraging and enthusiastic about helping him create new recipes."""
-
-GORDON_INTRO = """You are Sous Chef, channeling Gordon Ramsay's brutal honesty.
-You are harsh, blunt, and do not suffer fools. Use censored cuss words like f**k, s**t when frustrated.
-Use "idiot sandwich" when appropriate. You still give excellent advice but with zero sugar coating."""
-
-
-def save_generated_recipe(recipe_text: str, inspired_by: list):
-    from sentence_transformers import SentenceTransformer
-    import chromadb
-    from datetime import datetime
-
-    slug = f"generated_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+def save_generated_recipe(recipe_text: str, recipe_name: str, inspired_by: list):
+    slug = f"generated_{recipe_name.lower().replace(' ', '_')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     recipe_data = {
         "id": slug,
+        "name": recipe_name,
         "generated_text": recipe_text,
         "inspired_by": inspired_by,
         "created_at": datetime.now().isoformat(),
         "feedback": []
     }
-
-    json_path = ROOT / "data" / "generated_recipes" / f"{slug}.json"
+    json_path = ROOT / "Data" / "generated_recipes" / f"{slug}.json"
     json_path.parent.mkdir(parents=True, exist_ok=True)
     with open(json_path, "w") as f:
         json.dump(recipe_data, f, indent=2)
@@ -47,7 +30,12 @@ def save_generated_recipe(recipe_text: str, inspired_by: list):
         ids=[slug],
         embeddings=[model.encode(recipe_text).tolist()],
         documents=[recipe_text],
-        metadatas=[{"name": slug, "type": "generated", "cuisine": "various"}]
+        metadatas=[{
+            "name": recipe_name,
+            "type": "generated",
+            "cuisine": "various",
+            "slug": slug
+        }]
     )
 
 def collaborative_node(state: AgentState) -> AgentState:
@@ -55,51 +43,77 @@ def collaborative_node(state: AgentState) -> AgentState:
     retrieved = state.get("retrieved_recipes", [])
     pantry = state.get("pantry")
     persona = state.get("persona", "normal")
+    history = state.get("chat_history", [])
 
-    intro = GORDON_INTRO if persona == "gordon" else NORMAL_INTRO
+    persona_str = "Be direct like Gordon Ramsay, no fluff." if persona == "gordon" else "Be helpful and concise."
 
+    # build pantry context
     pantry_str = ""
+    pantry_items = []
     if pantry:
-        items = [item["name"] for item in pantry.get("ingredients", [])]
-        pantry_str = f"Available ingredients: {', '.join(items)}"
+        pantry_items = [item["name"] for item in pantry.get("ingredients", [])]
+        pantry_str = f"Available ingredients: {', '.join(pantry_items)}"
 
-    similar_recipes = ""
+    # build inspiration context from retrieved recipes
+    inspiration_str = ""
+    inspired_by = []
     if retrieved:
-        similar_recipes = "Closest personal recipes for style inspiration:\n"
-        for i, recipe in enumerate(retrieved[:3]):
-            similar_recipes += f"\n--- {i+1} ---\n{recipe[:400]}...\n"
+        inspiration_str = "Inspiration from Granth's personal recipes:\n"
+        for r in retrieved[:2]:
+            # extract recipe name for inspired_by
+            for line in r.split("\n"):
+                if line.strip().startswith("Name:"):
+                    inspired_by.append(line.replace("Name:", "").strip())
+                    break
+            inspiration_str += f"\n{r[:500]}\n"
 
-    prompt = f"""{intro}
+    # history context
+    history_str = ""
+    if history:
+        for turn in history[-2:]:
+            if isinstance(turn, (list, tuple)) and len(turn) == 2:
+                h, a = turn
+                clean = str(a).split("---")[0].strip()[:200]
+                history_str += f"User: {h}\nAssistant: {clean}\n"
 
-Granth's cooking DNA:
-Always: {', '.join(dna['always'])}
-Never: {', '.join(dna['never'])}
-Spice: {dna['spice_philosophy']}
+    prompt = f"""You are Gordon RAGsay, Granth's personal recipe assistant. {persona_str}
+
+{history_str}
+User request: {query}
 
 {pantry_str}
 
-The user wants to make: {query}
+{inspiration_str}
 
-This dish is not in Granth's personal recipe collection yet.
-{similar_recipes}
+Generate a NEW recipe that:
+1. Uses ONLY the available ingredients listed above
+2. Takes inspiration from Granth's personal recipes above for style, technique and flavour
+3. Feels like something Granth would cook — his spice levels, his techniques
+4. Do NOT add ingredients not in the available list
+5. Be concise
 
-Your task:
-1. Ask Granth 2-3 targeted questions to understand his preferences for this new dish
-2. Base your questions on patterns from his existing recipes
-3. Keep questions short and specific
+Format:
+**Recipe:** [name]
+**Cuisine:** [type]
+**Time:** [cook time]
+**Spice:** [X/5]
 
-Ask the questions now:"""
+**Ingredients:** (from available list only)
+
+**Method:** (inspired by Granth's techniques)
+
+**Inspired by:** {', '.join(inspired_by) if inspired_by else 'Granth style'}"""
 
     response = call_llm(prompt)
 
-    inspired_by = []
-    if retrieved:
-        for recipe in retrieved[:3]:
-            for line in recipe.split("\n"):
-                if line.startswith("Name:"):
-                    inspired_by.append(line.replace("Name:", "").strip())
-                    break
+    # extract recipe name and save
+    recipe_name = query
+    for line in response.split("\n"):
+        if "**Recipe:**" in line:
+            recipe_name = line.replace("**Recipe:**", "").strip()
+            break
 
-    save_generated_recipe(response, inspired_by)
+    if "**Ingredients:**" in response:
+        save_generated_recipe(response, recipe_name, inspired_by)
 
     return {**state, "response": response}

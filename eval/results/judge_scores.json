@@ -1,0 +1,1010 @@
+{
+  "f1_whole": {
+    "query_id": "f1",
+    "condition": "whole",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response is accurate and concise, but it lacks the personalization elements requested by the prompt, such as considering user-specific preferences like spice levels or ingredient variations."
+    }
+  },
+  "f2_whole": {
+    "query_id": "f2",
+    "condition": "whole",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 4,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.8,
+      "reasoning": "The response directly and accurately answers the query based on the provided recipe data, although it could be slightly more personalised by mentioning specific spicy ingredients like the 4-5 dried red chillies."
+    }
+  },
+  "f3_whole": {
+    "query_id": "f3",
+    "condition": "whole",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 3,
+      "personalisation": 1,
+      "groundedness": 3,
+      "conciseness": 5,
+      "overall": 3.4,
+      "reasoning": "The response answers the query directly and plausibly for the recipe, but it fails to incorporate any of the provided personalized details such as the specific spice blend or serving size."
+    }
+  },
+  "f4_whole": {
+    "query_id": "f4",
+    "condition": "whole",
+    "family": "factual",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 2,
+      "personalisation": 2,
+      "groundedness": 3,
+      "conciseness": 2,
+      "overall": 2.0,
+      "reasoning": "The response completely ignores the user's query and the expected recipe, providing an irrelevant dessert recipe that cuts off mid-sentence."
+    }
+  },
+  "f5_whole": {
+    "query_id": "f5",
+    "condition": "whole",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response is accurate and concise, but it lacks personalization as it provides a purely factual answer without acknowledging the user's context or specific recipe notes."
+    }
+  },
+  "cm1_whole": {
+    "query_id": "cm1",
+    "condition": "whole",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "cm2_whole": {
+    "query_id": "cm2",
+    "condition": "whole",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response provides a clear, accurate recipe, but lacks any meaningful personalisation elements like flavor adjustments or dietary preferences."
+    }
+  },
+  "cm3_whole": {
+    "query_id": "cm3",
+    "condition": "whole",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response provides a correct and relevant recipe, though it lacks specific personalization or consideration for the 'pre-gym' context regarding nutrition or ingredient preferences."
+    }
+  },
+  "a1_whole": {
+    "query_id": "a1",
+    "condition": "whole",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 1,
+      "personalisation": 2,
+      "groundedness": 1,
+      "conciseness": 5,
+      "overall": 2.8,
+      "reasoning": "The response directly addresses the query but fails on accuracy by hallucinating the absence of the Oreo Cheesecake bites recipe and misidentifying the total time as the quickest."
+    }
+  },
+  "a2_whole": {
+    "query_id": "a2",
+    "condition": "whole",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 4.6,
+      "reasoning": "The response directly addresses the user's request with a high-quality, personalized recipe, though it suffers from a minor formatting error where the final sentence in the notes is cut off."
+    }
+  },
+  "a3_whole": {
+    "query_id": "a3",
+    "condition": "whole",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "The response is a high-quality recipe but fails the specific constraint of the prompt by ignoring the expected recipe choice (Strawberry cheesecake) in favor of Banana Bread."
+    }
+  },
+  "a4_whole": {
+    "query_id": "a4",
+    "condition": "whole",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 1,
+      "personalisation": 5,
+      "groundedness": 2,
+      "conciseness": 2,
+      "overall": 2.2,
+      "reasoning": "The response fails to address the user's request to compare two specific recipes, instead pivoting to a conversational brainstorming session that ignores the prompt's core task."
+    }
+  },
+  "a5_whole": {
+    "query_id": "a5",
+    "condition": "whole",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.8,
+      "reasoning": "The response directly identifies the correct recipe and provides a well-structured, personalized profile, though the cooking instructions are slightly truncated at the end."
+    }
+  },
+  "conv1_whole": {
+    "query_id": "conv1",
+    "condition": "whole",
+    "family": "conversational",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 3,
+      "overall": 3.0,
+      "reasoning": "The response failed to directly answer the user's question about protein substitutions, opting instead to provide a recipe that still requires paneer."
+    }
+  },
+  "conv2_whole": {
+    "query_id": "conv2",
+    "condition": "whole",
+    "family": "conversational",
+    "scores": {
+      "relevance": 4,
+      "accuracy": 5,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 4.6,
+      "reasoning": "The response effectively balances personalized engagement with clear, actionable nutritional advice, though it leaves the specific recipe creation for a follow-up interaction."
+    }
+  },
+  "conv3_whole": {
+    "query_id": "conv3",
+    "condition": "whole",
+    "family": "conversational",
+    "scores": {
+      "relevance": 2,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 4,
+      "conciseness": 2,
+      "overall": 3.4,
+      "reasoning": "While the assistant successfully addresses the salt reduction, it fails to provide the actual recipe, instead padding the response with unnecessary conversational filler and questions."
+    }
+  },
+  "conv4_whole": {
+    "query_id": "conv4",
+    "condition": "whole",
+    "family": "conversational",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "conv5_whole": {
+    "query_id": "conv5",
+    "condition": "whole",
+    "family": "conversational",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f1_sections": {
+    "query_id": "f1",
+    "condition": "sections",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f2_sections": {
+    "query_id": "f2",
+    "condition": "sections",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f3_sections": {
+    "query_id": "f3",
+    "condition": "sections",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f4_sections": {
+    "query_id": "f4",
+    "condition": "sections",
+    "family": "factual",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 2,
+      "personalisation": 1,
+      "groundedness": 3,
+      "conciseness": 2,
+      "overall": 1.8,
+      "reasoning": "The response completely ignores the query about hummus and provides an irrelevant, incomplete recipe for a strawberry cheesecake."
+    }
+  },
+  "f5_sections": {
+    "query_id": "f5",
+    "condition": "sections",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response is accurate and concise, but it fails to incorporate any of the provided personal notes or specific recipe context to make the answer feel truly tailored."
+    }
+  },
+  "cm1_sections": {
+    "query_id": "cm1",
+    "condition": "sections",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 2,
+      "personalisation": 4,
+      "groundedness": 3,
+      "conciseness": 4,
+      "overall": 3.6,
+      "reasoning": "While the recipe follows the requested white base style and offers good personalisation, it is incomplete as the procedure cuts off abruptly and includes unusual measurements like '1 piece' of cherry tomato."
+    }
+  },
+  "cm2_sections": {
+    "query_id": "cm2",
+    "condition": "sections",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response is highly relevant, accurate, and concise, but it lacks true personalization as it does not tailor the recipe to individual preferences or suggest specific flavor adjustments."
+    }
+  },
+  "cm3_sections": {
+    "query_id": "cm3",
+    "condition": "sections",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response is a technically accurate and relevant recipe, but it lacks genuine personalization as it fails to acknowledge the user's specific context or suggest any improvements for a pre-gym snack."
+    }
+  },
+  "a1_sections": {
+    "query_id": "a1",
+    "condition": "sections",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 3,
+      "groundedness": 5,
+      "conciseness": 3,
+      "overall": 3.2,
+      "reasoning": "The response failed to identify the correct recipe requested by the user, providing a banana bread recipe instead of the expected Oreo Cheesecake bites."
+    }
+  },
+  "a2_sections": {
+    "query_id": "a2",
+    "condition": "sections",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 4.6,
+      "reasoning": "The response effectively addresses the user's request with a personalized recipe, though the notes section is incomplete and cuts off mid-sentence."
+    }
+  },
+  "a3_sections": {
+    "query_id": "a3",
+    "condition": "sections",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "While the recipe provided is high-quality and well-structured, it failed to follow the user's explicit request for a strawberry cheesecake."
+    }
+  },
+  "a4_sections": {
+    "query_id": "a4",
+    "condition": "sections",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 1,
+      "personalisation": 5,
+      "groundedness": 1,
+      "conciseness": 3,
+      "overall": 2.2,
+      "reasoning": "The response completely fails to address the user's request to compare two hummus recipes, instead opting for a vague conversational filler that avoids providing any actual recipe content."
+    }
+  },
+  "a5_sections": {
+    "query_id": "a5",
+    "condition": "sections",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 4,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.8,
+      "reasoning": "The response is accurate, directly addresses the user's query using the provided data, and is perfectly concise."
+    }
+  },
+  "conv1_sections": {
+    "query_id": "conv1",
+    "condition": "sections",
+    "family": "conversational",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 3,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 3.4,
+      "reasoning": "The response provides a recipe rather than answering the user's specific question about protein substitutions, though the recipe itself is well-structured and plausible."
+    }
+  },
+  "conv2_sections": {
+    "query_id": "conv2",
+    "condition": "sections",
+    "family": "conversational",
+    "scores": {
+      "relevance": 4,
+      "accuracy": 5,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 4.6,
+      "reasoning": "The response is highly personalized and accurate, though it ends abruptly in the middle of a sentence and asks for user input instead of providing a full, completed recipe as requested."
+    }
+  },
+  "conv3_sections": {
+    "query_id": "conv3",
+    "condition": "sections",
+    "family": "conversational",
+    "scores": {
+      "relevance": 2,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 2,
+      "overall": 3.6,
+      "reasoning": "While the salt adjustment is accurate, the response ignores the core request for a full recipe by instead asking unnecessary questions and using excessive conversational padding."
+    }
+  },
+  "conv4_sections": {
+    "query_id": "conv4",
+    "condition": "sections",
+    "family": "conversational",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 3,
+      "personalisation": 4,
+      "groundedness": 3,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "The recipe directly addresses the request by using dark chocolate instead of milk chocolate, though the technique (setting blended paneer in the fridge for 8 hours) is more of a mousse or set-cream than traditional ice cream."
+    }
+  },
+  "conv5_sections": {
+    "query_id": "conv5",
+    "condition": "sections",
+    "family": "conversational",
+    "scores": {
+      "relevance": 2,
+      "accuracy": 0,
+      "personalisation": 2,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 2.0,
+      "reasoning": "The response fails to provide a recipe as requested and adopts an unnecessarily aggressive persona, though it does seek clarifying information to eventually satisfy the query."
+    }
+  },
+  "f1_sentences": {
+    "query_id": "f1",
+    "condition": "sentences",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 4,
+      "personalisation": 1,
+      "groundedness": 3,
+      "conciseness": 5,
+      "overall": 3.6,
+      "reasoning": "The response provides a direct and concise answer, but it lacks personalization and contains irrelevant technical noise regarding price data."
+    }
+  },
+  "f2_sentences": {
+    "query_id": "f2",
+    "condition": "sentences",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f3_sentences": {
+    "query_id": "f3",
+    "condition": "sentences",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f4_sentences": {
+    "query_id": "f4",
+    "condition": "sentences",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "f5_sentences": {
+    "query_id": "f5",
+    "condition": "sentences",
+    "family": "factual",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "cm1_sentences": {
+    "query_id": "cm1",
+    "condition": "sentences",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "cm2_sentences": {
+    "query_id": "cm2",
+    "condition": "sentences",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "cm3_sentences": {
+    "query_id": "cm3",
+    "condition": "sentences",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.4,
+      "reasoning": "The response provides a relevant and accurate recipe that matches the user's intent, though it lacks deeper personalization regarding dietary preferences or nutritional adjustments suitable for a pre-gym snack."
+    }
+  },
+  "a1_sentences": {
+    "query_id": "a1",
+    "condition": "sentences",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 1,
+      "personalisation": 2,
+      "groundedness": 1,
+      "conciseness": 5,
+      "overall": 2.8,
+      "reasoning": "The response is relevant and concise, but it fails on accuracy and groundedness by claiming the user only has one recipe when the expected answer (Oreo Cheesecake bites) was omitted from the provided context or knowledge base."
+    }
+  },
+  "a2_sentences": {
+    "query_id": "a2",
+    "condition": "sentences",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 4.6,
+      "reasoning": "The response successfully provides the expected recipe with high personalization, though it suffers from a truncated 'My Notes' section and a minor logical inconsistency regarding the pumpkin seeds providing saltiness in an unsalted dish."
+    }
+  },
+  "a3_sentences": {
+    "query_id": "a3",
+    "condition": "sentences",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "While the recipe is high quality and personalized, it failed to provide the specifically expected strawberry cheesecake requested in the prompt."
+    }
+  },
+  "a4_sentences": {
+    "query_id": "a4",
+    "condition": "sentences",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 1,
+      "personalisation": 5,
+      "groundedness": 1,
+      "conciseness": 3,
+      "overall": 2.2,
+      "reasoning": "The response fails to perform the requested comparison of the two provided recipes, instead ignoring the prompt entirely to ask follow-up questions about unrelated serving suggestions."
+    }
+  },
+  "a5_sentences": {
+    "query_id": "a5",
+    "condition": "sentences",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 4,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.8,
+      "reasoning": "The response directly and accurately identifies the specific recipe from the provided data with perfect conciseness."
+    }
+  },
+  "conv1_sentences": {
+    "query_id": "conv1",
+    "condition": "sentences",
+    "family": "conversational",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 2,
+      "groundedness": 5,
+      "conciseness": 3,
+      "overall": 3.0,
+      "reasoning": "The response completely ignores the user's question about protein substitutes for paneer and instead provides a recipe that requires paneer as a main ingredient."
+    }
+  },
+  "conv2_sentences": {
+    "query_id": "conv2",
+    "condition": "sentences",
+    "family": "conversational",
+    "scores": {
+      "relevance": 4,
+      "accuracy": 5,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 3,
+      "overall": 4.4,
+      "reasoning": "The response is highly personalized and accurate, but it is cut off mid-sentence and fails to provide a full recipe as requested."
+    }
+  },
+  "conv3_sentences": {
+    "query_id": "conv3",
+    "condition": "sentences",
+    "family": "conversational",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 4,
+      "conciseness": 2,
+      "overall": 3.6,
+      "reasoning": "The response effectively addresses the low-salt request and uses personalization, but it fails to provide the actual recipe, opting instead to ask clarifying questions which pads the response unnecessarily."
+    }
+  },
+  "conv4_sentences": {
+    "query_id": "conv4",
+    "condition": "sentences",
+    "family": "conversational",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 3,
+      "personalisation": 4,
+      "groundedness": 3,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "The response directly addresses the user's dietary restriction with a creative recipe, though the technical feasibility of achieving a proper 'ice cream' texture by simply refrigerating a paneer-milk blend is questionable."
+    }
+  },
+  "conv5_sentences": {
+    "query_id": "conv5",
+    "condition": "sentences",
+    "family": "conversational",
+    "scores": {
+      "relevance": 2,
+      "accuracy": 5,
+      "personalisation": 3,
+      "groundedness": 5,
+      "conciseness": 3,
+      "overall": 3.6,
+      "reasoning": "The response effectively captures a specific persona to narrow down preferences, but it fails to provide an actual recipe as requested, necessitating a follow-up interaction."
+    }
+  },
+  "f1_dynamic": {
+    "query_id": "f1",
+    "condition": "dynamic",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 4,
+      "personalisation": 2,
+      "groundedness": 4,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "The response directly answers the query with a standard measurement, though it lacks personalization regarding specific user preferences or variations."
+    }
+  },
+  "f2_dynamic": {
+    "query_id": "f2",
+    "condition": "dynamic",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 3,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.6,
+      "reasoning": "The response directly and accurately answers the query based on the provided recipe data, though it lacks extra conversational context to feel highly personalised."
+    }
+  },
+  "f3_dynamic": {
+    "query_id": "f3",
+    "condition": "dynamic",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 3,
+      "personalisation": 1,
+      "groundedness": 2,
+      "conciseness": 5,
+      "overall": 3.2,
+      "reasoning": "The response answers the specific query directly and concisely, but fails to incorporate any of the provided recipe details or personal preferences, making it a generic instruction rather than a truly personalised one."
+    }
+  },
+  "f4_dynamic": {
+    "query_id": "f4",
+    "condition": "dynamic",
+    "family": "factual",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 2,
+      "personalisation": 2,
+      "groundedness": 3,
+      "conciseness": 2,
+      "overall": 2.0,
+      "reasoning": "The response completely ignores the user's query about hummus and the requested recipe, instead providing an unrelated strawberry cheesecake recipe that cuts off mid-sentence."
+    }
+  },
+  "f5_dynamic": {
+    "query_id": "f5",
+    "condition": "dynamic",
+    "family": "factual",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 1,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.2,
+      "reasoning": "The response is accurate, grounded, and concise, but it fails to leverage any of the user's provided personal notes or specific recipe details to make the interaction feel personalized."
+    }
+  },
+  "cm1_dynamic": {
+    "query_id": "cm1",
+    "condition": "dynamic",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "cm2_dynamic": {
+    "query_id": "cm2",
+    "condition": "dynamic",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "cm3_dynamic": {
+    "query_id": "cm3",
+    "condition": "dynamic",
+    "family": "cross_modal",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "a1_dynamic": {
+    "query_id": "a1",
+    "condition": "dynamic",
+    "family": "analytical",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "a2_dynamic": {
+    "query_id": "a2",
+    "condition": "dynamic",
+    "family": "analytical",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "a3_dynamic": {
+    "query_id": "a3",
+    "condition": "dynamic",
+    "family": "analytical",
+    "scores": {
+      "relevance": 3,
+      "accuracy": 3,
+      "personalisation": 3,
+      "groundedness": 3,
+      "conciseness": 3,
+      "overall": 3,
+      "reasoning": "parse error \u2014 default scores"
+    }
+  },
+  "a4_dynamic": {
+    "query_id": "a4",
+    "condition": "dynamic",
+    "family": "analytical",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 1,
+      "personalisation": 5,
+      "groundedness": 1,
+      "conciseness": 3,
+      "overall": 2.2,
+      "reasoning": "The response completely fails to address the user's request to compare two recipes, instead pivoting to a conversational planning phase that ignores the prompt's core task."
+    }
+  },
+  "a5_dynamic": {
+    "query_id": "a5",
+    "condition": "dynamic",
+    "family": "analytical",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 5,
+      "personalisation": 3,
+      "groundedness": 5,
+      "conciseness": 5,
+      "overall": 4.6,
+      "reasoning": "The response is highly relevant, accurate, and concise, though it could have been further improved by incorporating specific personal details from the recipe data provided."
+    }
+  },
+  "conv1_dynamic": {
+    "query_id": "conv1",
+    "condition": "dynamic",
+    "family": "conversational",
+    "scores": {
+      "relevance": 1,
+      "accuracy": 4,
+      "personalisation": 3,
+      "groundedness": 4,
+      "conciseness": 4,
+      "overall": 3.2,
+      "reasoning": "The response provides a recipe for paneer salad instead of answering the user's specific question about protein substitutes for paneer."
+    }
+  },
+  "conv2_dynamic": {
+    "query_id": "conv2",
+    "condition": "dynamic",
+    "family": "conversational",
+    "scores": {
+      "relevance": 4,
+      "accuracy": 5,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 4,
+      "overall": 4.6,
+      "reasoning": "The response effectively balances personalized engagement with practical, accurate dietary advice, though the final sentence was abruptly cut off."
+    }
+  },
+  "conv3_dynamic": {
+    "query_id": "conv3",
+    "condition": "dynamic",
+    "family": "conversational",
+    "scores": {
+      "relevance": 2,
+      "accuracy": 4,
+      "personalisation": 5,
+      "groundedness": 5,
+      "conciseness": 2,
+      "overall": 3.6,
+      "reasoning": "The response is highly personalized and addresses the salt constraint, but it fails to provide the actual recipe requested, instead opting to ask follow-up questions."
+    }
+  },
+  "conv4_dynamic": {
+    "query_id": "conv4",
+    "condition": "dynamic",
+    "family": "conversational",
+    "scores": {
+      "relevance": 5,
+      "accuracy": 3,
+      "personalisation": 4,
+      "groundedness": 3,
+      "conciseness": 5,
+      "overall": 4.0,
+      "reasoning": "The recipe directly addresses the request by using dark chocolate instead of milk chocolate, though the technique (setting blended paneer in a fridge for 8 hours) is a highly unconventional and likely ineffective way to create 'ice cream'."
+    }
+  },
+  "conv5_dynamic": {
+    "query_id": "conv5",
+    "condition": "dynamic",
+    "family": "conversational",
+    "scores": {
+      "relevance": 4,
+      "accuracy": 5,
+      "personalisation": 4,
+      "groundedness": 5,
+      "conciseness": 3,
+      "overall": 4.2,
+      "reasoning": "The response effectively captures a persona to gather necessary constraints for a recipe, though the abrasive tone and excessive filler could be considered padding."
+    }
+  }
+}
