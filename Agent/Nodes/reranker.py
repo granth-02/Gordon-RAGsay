@@ -1,5 +1,6 @@
 import requests
 import json
+from config import call_llm
 from Agent.state import AgentState
 
 NORMAL_PROMPT = """You are a recipe ranking assistant with deep knowledge of the user's cooking preferences.
@@ -51,13 +52,6 @@ Recipes:
 
 Return ONLY a JSON array of indices in ranked order (most suitable first), no explanation:
 [0, 2, 1]"""
-
-def call_llm(prompt: str) -> str:
-    response = requests.post("http://localhost:11434/api/generate", json = {
-        "model": "gemma4:e2b",
-        "prompt": prompt,
-        "stream": False
-    })
 
 def reranker_node(state: AgentState) -> AgentState:
     retrieved = state.get("retrieved_recipes", [])

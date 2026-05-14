@@ -1,6 +1,7 @@
 import requests
 import base64
 import json
+from config import call_vision
 from Agent.state import AgentState
 
 PANTRY_PROMPT = """You are a kitchen inventory assistant. Analyse this image of a pantry or ingredients.
@@ -40,18 +41,6 @@ Return ONLY valid JSON in exactly this format, no explanation:
 }
 Do not wrap the JSON in code fences or markdown. Output raw JSON only."""
 
-def call_vision(image_path: str, prompt: str) -> str:
-    with open(image_path, "rb") as f:
-        image_data = base64.b64encode(f.read()).decode('utf-8')
-    
-    response = requests.post("http://localhost:11434/api/generate", json={
-        "model": "gemma4:e2b",
-        "prompt": prompt,
-        "images": [image_data],
-        "stream": False
-    })
-
-    return response.json()['response']
 
 def extract_pantry(image_path: str) -> dict:
     raw = call_vision(image_path, PANTRY_PROMPT)
@@ -69,7 +58,7 @@ def extract_dish_tags(image_path: str) -> dict:
     print(f"Raw response: {raw}") 
     try:
         start = raw.find("{")
-        end = raw.find("}") + 1
+        end = raw.rfind("}") + 1
         return json.loads(raw[start:end])
     except Exception:
         return{}

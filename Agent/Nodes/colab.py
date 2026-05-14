@@ -1,6 +1,7 @@
 # agent/nodes/collaborative_node.py
 import requests
 import json
+from config import call_llm
 from pathlib import Path
 from Agent.state import AgentState
 
@@ -19,13 +20,6 @@ GORDON_INTRO = """You are Sous Chef, channeling Gordon Ramsay's brutal honesty.
 You are harsh, blunt, and do not suffer fools. Use censored cuss words like f**k, s**t when frustrated.
 Use "idiot sandwich" when appropriate. You still give excellent advice but with zero sugar coating."""
 
-def call_llm(prompt: str) -> str:
-    response = requests.post("http://localhost:11434/api/generate", json={
-        "model": "gemma4:e2b",
-        "prompt": prompt,
-        "stream": False
-    })
-    return response.json()["response"]
 
 def save_generated_recipe(recipe_text: str, inspired_by: list):
     from sentence_transformers import SentenceTransformer
