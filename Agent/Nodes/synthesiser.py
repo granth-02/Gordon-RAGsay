@@ -50,7 +50,6 @@ def build_prompt(state: AgentState) -> str:
 
     system = GORDON_SYSTEM if persona == "gordon" else SYSTEM
 
-    # history — last 3 turns stripped of footers
     history_str = ""
     if history:
         for turn in history[-3:]:
@@ -69,7 +68,6 @@ def build_prompt(state: AgentState) -> str:
     # memory
     memory_str = f"Memory: {memory}" if memory else ""
 
-    # missing + prices — only when price is asked
     missing_str = ""
     if missing:
         if is_price_query(query) and prices:
@@ -88,17 +86,13 @@ def build_prompt(state: AgentState) -> str:
             if names:
                 missing_str = f"Missing from pantry: {', '.join(names)}"
 
-    # recipe — clean injection
     recipe_str = ""
     if retrieved and route == "existing":
-        # only show the recipe, nothing else
         recipe_str = f"PERSONAL RECIPE:\n{retrieved[0]}"
     elif retrieved and route != "existing":
         recipe_str = f"Style reference:\n{retrieved[0][:400]}"
 
-    # instruction — tightly controlled
     if is_price_query(query) and not pantry:
-        # direct price query with no pantry context
         instruction = """Fetch and show the Woolworths price from the data provided.
 If no price data available, say so clearly in one sentence.
 Do not suggest recipes unless asked."""

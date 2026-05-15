@@ -22,18 +22,14 @@ def retrieval_node(state: AgentState) -> AgentState:
     dish_tags = state.get("dish_tags")
     route = state.get("route", "")
 
-    # skip if already retrieved
     existing = state.get("retrieved_recipes", [])
     if existing:
         return state
 
-    # build retrieval query based on context
     if pantry and route == "collaborative":
-        # retrieve recipes that use pantry ingredients
         items = [item["name"] for item in pantry.get("ingredients", [])]
         retrieval_query = f"recipe using {' '.join(items)}"
     elif dish_tags:
-        # retrieve recipes similar to photographed dish
         retrieval_query = f"{dish_tags.get('dish_name', '')} {dish_tags.get('cuisine', '')}"
     else:
         retrieval_query = query

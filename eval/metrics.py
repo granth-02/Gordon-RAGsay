@@ -2,13 +2,26 @@ import time
 import re
 
 def recall_at_k(retrieved_names: list, expected_name: str, k: int = 3) -> float:
-    if not expected_name or not retrieved_names:
+    if not expected_name:
+        return None
+    if not retrieved_names:
         return 0.0
     top_k = retrieved_names[:k]
     expected_lower = expected_name.lower()
     for name in top_k:
         if expected_lower in str(name).lower() or str(name).lower() in expected_lower:
             return 1.0
+    return 0.0
+
+def mrr(retrieved_names: list, expected_name: str) -> float:
+    if not expected_name:
+        return None  # excluded
+    if not retrieved_names:
+        return 0.0
+    expected_lower = expected_name.lower()
+    for i, name in enumerate(retrieved_names):
+        if expected_lower in str(name).lower() or str(name).lower() in expected_lower:
+            return 1.0 / (i + 1)
     return 0.0
 
 def mrr(retrieved_names: list, expected_name: str) -> float:
@@ -56,7 +69,6 @@ def ingredient_utilisation_rate(response: str, pantry_items: list) -> float:
     if not pantry_items or not response:
         return 0.0
     response_lower = response.lower()
-    # find ingredients section in response
     ingredients_section = response_lower
     if "ingredients:" in response_lower:
         start = response_lower.find("ingredients:")
@@ -77,7 +89,7 @@ def ingredient_utilisation_rate(response: str, pantry_items: list) -> float:
 
 def chunk_mode_accuracy(predicted: str, expected: str) -> float:
     if not expected:
-        return 1.0  # no expectation — always correct
+        return 1.0
     return 1.0 if predicted == expected else 0.0
 
 def measure_latency(func, *args, **kwargs):

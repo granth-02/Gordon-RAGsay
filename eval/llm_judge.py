@@ -103,7 +103,6 @@ def run_llm_judge():
     with open(JUDGE_FILE, "w") as f:
         json.dump(judge_scores, f, indent=2)
 
-    # print averages by condition
     print("\n── Judge Scores by Condition ──")
     for condition in ["whole", "sections", "sentences", "dynamic"]:
         cond_scores = [v["scores"] for v in judge_scores.values() 

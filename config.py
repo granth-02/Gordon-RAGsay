@@ -1,9 +1,13 @@
 from google import genai
 from google.genai import types
 import PIL.Image
+from dotenv import load_dotenv
+import os
 import io
 
-client = genai.Client(api_key="API_KEY")
+load_dotenv()
+api = os.getenv("GEMINI_API_KEY")
+client = genai.Client(api_key=api)
 
 def call_llm(prompt: str) -> str:
     response = client.models.generate_content(

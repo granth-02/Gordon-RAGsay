@@ -31,14 +31,11 @@ def woolworths_node(state: AgentState) -> AgentState:
     prices = {}
 
     if missing:
-        # fetch prices for missing ingredients
         for item in missing:
             ing = item.get("ingredient", "")
             if ing and not item.get("alternative"):
                 prices[ing] = get_price(ing)
     else:
-        # no missing list — extract ingredient from query directly
-        # e.g. "fetch price of chicken breast"
         words = query.lower()
         skip = ["price", "cost", "fetch", "get", "me", "the", "of", "at",
                 "woolworths", "how", "much", "is", "a", "can", "you", "please"]

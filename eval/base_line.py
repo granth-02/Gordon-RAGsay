@@ -24,7 +24,6 @@ def run_baseline():
 
         print(f"  Running: {q['id']} — {q['query'][:50]}...")
         
-        # plain Gemini — no system prompt, no DNA, no retrieved recipes
         prompt = f"User: {q['query']}\n\nPlease help with this cooking question."
         
         try:

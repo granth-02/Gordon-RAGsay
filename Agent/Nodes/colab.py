@@ -25,7 +25,7 @@ def save_generated_recipe(recipe_text: str, recipe_name: str, inspired_by: list)
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
     client = chromadb.PersistentClient(path=str(ROOT / "chroma_store"))
-    col = client.get_collection("recipies_whole_doc")
+    col = client.get_or_create_collection("recipies_generated")
     col.add(
         ids=[slug],
         embeddings=[model.encode(recipe_text).tolist()],
@@ -47,14 +47,12 @@ def collaborative_node(state: AgentState) -> AgentState:
 
     persona_str = "Be direct like Gordon Ramsay, no fluff." if persona == "gordon" else "Be helpful and concise."
 
-    # build pantry context
     pantry_str = ""
     pantry_items = []
     if pantry:
         pantry_items = [item["name"] for item in pantry.get("ingredients", [])]
         pantry_str = f"Available ingredients: {', '.join(pantry_items)}"
 
-    # build inspiration context from retrieved recipes
     inspiration_str = ""
     inspired_by = []
     if retrieved:
@@ -106,7 +104,6 @@ Format:
 
     response = call_llm(prompt)
 
-    # extract recipe name and save
     recipe_name = query
     for line in response.split("\n"):
         if "**Recipe:**" in line:

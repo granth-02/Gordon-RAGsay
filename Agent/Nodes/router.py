@@ -70,7 +70,6 @@ def router(state: AgentState) -> AgentState:
     query = state.get("query", "")
     chunk_mode = determine_chunk_mode(query)
 
-    # price query — route to existing so it hits woolworths node
     if any(kw in query.lower() for kw in PRICE_WORDS):
         return {**state, "route": "existing", "chunk_mode": chunk_mode, "retrieved_recipes": []}
 

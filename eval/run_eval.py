@@ -27,6 +27,12 @@ def load_cache():
             return json.load(f)
     return {}
 
+def safe_avg(results: list, metric: str) -> float:
+    values = [r.get(metric) for r in results if r.get(metric) is not None]
+    if not values:
+        return 0.0
+    return round(sum(values) / len(values), 3)
+
 def save_cache(cache):
     with open(CACHE_FILE, "w") as f:
         json.dump(cache, f, indent=2)
@@ -154,9 +160,9 @@ def print_summary(all_results: dict):
         print("Install tabulate: pip install tabulate")
         return
 
-    metrics = ["recall_at_3", "mrr", "keyword_match", "dna_compliance", 
+    metrics = ["recall_at_3", "mrr", "keyword_match", "dna_compliance",
                "chunk_accuracy", "latency"]
-    labels = ["Recall@3", "MRR", "Keyword Match", "DNA Compliance", 
+    labels = ["Recall@3", "MRR", "Keyword Match", "DNA Compliance",
               "Chunk Accuracy", "Avg Latency(s)"]
 
     print("\n── Overall Results ──")
@@ -165,18 +171,13 @@ def print_summary(all_results: dict):
         row = [label]
         for mode in CHUNK_MODES:
             results = all_results.get(mode, [])
-            if results:
-                avg = round(sum(r.get(metric, 0) for r in results) / len(results), 3)
-                row.append(avg)
-            else:
-                row.append("N/A")
+            row.append(safe_avg(results, metric) if results else "N/A")
         table.append(row)
 
-    print(tabulate(table, 
+    print(tabulate(table,
                   headers=["Metric"] + [m.upper() for m in CHUNK_MODES],
                   tablefmt="grid"))
 
-    # breakdown by family
     print("\n── Recall@3 by Query Family ──")
     families = ["factual", "cross_modal", "analytical", "conversational"]
     family_table = []
@@ -184,16 +185,12 @@ def print_summary(all_results: dict):
         row = [family.replace("_", " ").title()]
         for mode in CHUNK_MODES:
             results = [r for r in all_results.get(mode, []) if r["family"] == family]
-            if results:
-                avg = round(sum(r["recall_at_3"] for r in results) / len(results), 3)
-                row.append(avg)
-            else:
-                row.append("N/A")
+            row.append(safe_avg(results, "recall_at_3") if results else "N/A")
         family_table.append(row)
 
     print(tabulate(family_table,
                   headers=["Family"] + [m.upper() for m in CHUNK_MODES],
                   tablefmt="grid"))
-
+                  
 if __name__ == "__main__":
     run_evaluation()

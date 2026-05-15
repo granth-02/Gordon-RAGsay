@@ -12,21 +12,17 @@ from Agent.Nodes.colab import collaborative_node
 def vision_router_node(state: AgentState) -> AgentState:
     image_type = state.get("image_type")
     query = state.get("query", "").lower()
-
-    # creation keywords mean collaborative regardless of image type
+    
     creation_keywords = ["create", "make", "cook", "suggest", "what can i", 
                         "new recipe", "using these", "with these"]
     wants_new_recipe = any(kw in query for kw in creation_keywords)
 
     if image_type == "pantry":
         if wants_new_recipe:
-            # user wants a new recipe from pantry — collaborative
             return {**state, "route": "collaborative"}
         else:
-            # user asking about existing recipes with pantry context
             return {**state, "route": "existing"}
 
-    # dish image — check similarity
     dish_tags = state.get("dish_tags")
     if dish_tags:
         query_str = f"{dish_tags.get('dish_name', '')} {dish_tags.get('cuisine', '')}"
