@@ -14,31 +14,25 @@
 
 ## Installation
 
-### 1. Clone the repository
-```bash
-git clone <repo-url>
-cd "Gordon RAGsay"
-```
-
-### 2. Run the setup script
+### 1. Run the setup script
 ```bash
 python setup.py
 ```
 
-### 3. Add your Gemini API key
+### 2. Add your Gemini API key
 Open `config.py` and replace:
 ```python
 client = genai.Client(api_key="YOUR_GEMINI_API_KEY")
 ```
 
-### 4. Ingest recipes into ChromaDB
+### 3. Ingest recipes into ChromaDB
 ```bash
 python -m Ingest.ingest
 ```
 This builds three vector collections from the 47 personal recipe TXT files.
 Only needs to be run once.
 
-### 5. Launch the app
+### 4. Launch the app
 ```bash
 python app.py
 ```
@@ -59,11 +53,10 @@ Open `http://localhost:7860` in your browser.
 ## Running the Evaluation
 
 ```bash
-# Add test images first
 mkdir eval/test_images
-# Copy pantry.jpg and pasta.jpg into eval/test_images/
 
-# Run chunking ablation across all 4 conditions
+
+# Run chunking ablation 
 python -m eval.run_eval
 
 # Run LLM judge scoring
@@ -111,7 +104,7 @@ Gordon RAGsay/
 │   ├── metrics.py
 │   ├── run_eval.py
 │   ├── llm_judge.py
-│   └── baseline_comparison.py
+│   └── base_line.py
 ├── app.py
 ├── config.py
 ├── setup.py
