@@ -1,10 +1,10 @@
 sentence-transformers
 chromadb
 langgraph
+google-genai
 requests
-beautifulsoup4
-google-generativeai
-rouge-score
+pillow
 numpy
 pandas
+tabulate
 gradio
